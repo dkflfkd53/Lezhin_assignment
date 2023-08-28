@@ -1,5 +1,8 @@
 package com.example.lezhinassignment.domain.work.service;
 
+import com.example.lezhinassignment.domain.work.dto.request.WriteWorkRequest;
+import com.example.lezhinassignment.domain.work.entity.Work;
+import com.example.lezhinassignment.domain.work.repository.WorkRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +12,10 @@ public class WriteWorkService {
 
     private final WorkRepository workRepository;
 
-    public void writeWork() {
-        workRepository.save
+    public void writeWork(WriteWorkRequest request) {
+        workRepository.save(
+                Work.builder()
+                        .title(request.getTitle())
+                        .build());
     }
 }
