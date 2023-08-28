@@ -1,4 +1,4 @@
-package com.example.lezhinassignment.domain.user.entity;
+package com.example.lezhinassignment.domain.work.entity;
 
 import lombok.Getter;
 
