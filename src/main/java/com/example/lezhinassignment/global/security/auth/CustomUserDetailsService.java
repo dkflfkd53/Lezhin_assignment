@@ -2,6 +2,7 @@ package com.example.lezhinassignment.global.security.auth;
 
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.repository.UserRepository;
+import com.example.lezhinassignment.global.exception.user.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,10 +15,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUserId(String userId) {
+    public UserDetails loadUserByUsername(String userId) {
 
         User user = userRepository.findByUserId(userId)
-                .orElseThrow();
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
         return new CustomUserDetails(user);
     }
