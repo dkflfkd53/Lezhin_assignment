@@ -1,6 +1,6 @@
 package com.example.lezhinassignment.domain.work.entity;
 
-import lombok.Getter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +9,9 @@ import javax.persistence.Id;
 
 @Entity
 @Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Work {
 
     @Id
