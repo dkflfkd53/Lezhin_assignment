@@ -1,5 +1,6 @@
 package com.example.lezhinassignment.global.config;
 
+import com.example.lezhinassignment.global.security.jwt.JwtTokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
