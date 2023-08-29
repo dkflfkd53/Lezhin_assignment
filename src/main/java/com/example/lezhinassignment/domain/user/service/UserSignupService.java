@@ -15,7 +15,6 @@ public class UserSignupService {
     private final PasswordEncoder passwordEncoder;
 
     public void signup(SignupRequest request) {
-
         String password = passwordEncoder.encode(request.getPassword());
 
         userRepository.save(
