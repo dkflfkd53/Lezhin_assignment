@@ -17,6 +17,9 @@ public enum ErrorCode {
     USER_NOT_FOUND(404, "User not found"),
     PASSWORD_MISMATCH(404, "Password mismatch"),
 
+    //work
+    WORK_NOT_FOUND(404, "Work not found"),
+
     // general
     BAD_REQUEST(400, "Bad request"),
     INTERNAL_SERVER_ERROR(500, "Internal server error");
