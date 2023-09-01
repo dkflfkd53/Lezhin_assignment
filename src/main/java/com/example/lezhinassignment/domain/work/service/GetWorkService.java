@@ -1,5 +1,8 @@
 package com.example.lezhinassignment.domain.work.service;
 
+import com.example.lezhinassignment.domain.user.entity.User;
+import com.example.lezhinassignment.domain.user.repository.UserRepository;
+import com.example.lezhinassignment.domain.user.service.facade.UserFacade;
 import com.example.lezhinassignment.domain.work.dto.response.WorkResponse;
 import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.repository.WorkRepository;
@@ -12,10 +15,15 @@ import org.springframework.stereotype.Service;
 public class GetWorkService {
 
     private final WorkRepository workRepository;
+    private final UserFacade userFacade;
 
     public WorkResponse getWork(Long workId) {
         Work work = workRepository.findById(workId)
                 .orElseThrow(()-> WorkNotFoundException.EXCEPTION);
+
+        User user = userFacade.currentUser();
+
+        work.plusUser(user);
 
         return new WorkResponse(work);
     }
