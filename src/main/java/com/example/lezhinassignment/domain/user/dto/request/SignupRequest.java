@@ -26,7 +26,6 @@ public class SignupRequest {
     @NotNull
     private String type;
 
-    @NotNull
     private LocalDateTime registerDate;
 
 }
