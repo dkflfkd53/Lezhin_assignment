@@ -11,4 +11,6 @@ public class WriteWorkRequest {
     private String title;
 
     private WorkType workType;
+
+    private Long price;
 }

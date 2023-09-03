@@ -17,6 +17,7 @@ public class WriteWorkService {
                 Work.builder()
                         .title(request.getTitle())
                         .workType(request.getWorkType())
+                        .price(request.getPrice())
                         .build());
     }
 }

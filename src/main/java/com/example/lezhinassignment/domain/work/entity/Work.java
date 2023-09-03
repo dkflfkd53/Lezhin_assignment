@@ -26,4 +26,7 @@ public class Work {
     @NotNull
     private WorkType workType;
 
+    @NotNull
+    private Long price;
+
 }
