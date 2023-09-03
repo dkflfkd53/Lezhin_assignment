@@ -1,5 +1,6 @@
 package com.example.lezhinassignment.domain.work.controller;
 
+import com.example.lezhinassignment.domain.user.dto.response.UserResponse;
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.work.dto.request.WriteWorkRequest;
 import com.example.lezhinassignment.domain.work.dto.response.WorkResponse;
@@ -31,7 +32,7 @@ public class WorkController {
     }
 
     @GetMapping("/work-record/{workId}")
-    public List<User> getWorkRecord(@PathVariable Long workId) {
+    public List<UserResponse> getWorkRecord(@PathVariable Long workId) {
         return getWorkRecordService.getWorkRecord(workId);
     }
 

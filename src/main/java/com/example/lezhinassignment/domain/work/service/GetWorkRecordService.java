@@ -1,5 +1,6 @@
 package com.example.lezhinassignment.domain.work.service;
 
+import com.example.lezhinassignment.domain.user.dto.response.UserResponse;
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.repository.UserRepository;
 import com.example.lezhinassignment.domain.work.entity.Visit;
@@ -17,13 +18,16 @@ public class GetWorkRecordService {
     private final VisitRepository visitRepository;
     private final UserRepository userRepository;
 
-    public List<User> getWorkRecord(Long workId) {
+    public List<UserResponse> getWorkRecord(Long workId) {
         List<Long> ids = visitRepository.findAllByWorkId(workId)
                 .stream()
                 .map(Visit::getUserId)
                 .collect(Collectors.toList());
 
-        return userRepository.findAllById(ids);
+        return userRepository.findAllById(ids)
+                .stream()
+                .map(UserResponse::new)
+                .collect(Collectors.toList());
     }
 
 }
