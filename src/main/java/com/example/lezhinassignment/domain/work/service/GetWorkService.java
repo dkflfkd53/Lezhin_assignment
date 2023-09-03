@@ -2,6 +2,7 @@ package com.example.lezhinassignment.domain.work.service;
 
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.service.facade.UserFacade;
+import com.example.lezhinassignment.domain.work.enums.WorkType;
 import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
 import com.example.lezhinassignment.domain.work.entity.Visit;
 import com.example.lezhinassignment.domain.work.entity.Work;
@@ -28,6 +29,8 @@ public class GetWorkService {
                 .orElseThrow(()-> WorkNotFoundException.EXCEPTION);
 
         User user = userFacade.currentUser();
+
+        if(work.getWorkType() == WorkType.ADULT)user.addAdultWork(work);
 
         user.updateVisitTime(now);
 
