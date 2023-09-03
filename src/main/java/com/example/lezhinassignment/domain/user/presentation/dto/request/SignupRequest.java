@@ -11,19 +11,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SignupRequest {
 
-    @NotNull
     private String userName;
 
-    @NotNull
     private String userEmail;
 
-    @NotNull
     private String password;
 
-    @NotNull
     private String gender;
 
-    @NotNull
     private String type;
 
     private LocalDateTime registerDate;
