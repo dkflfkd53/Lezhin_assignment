@@ -29,6 +29,10 @@ public class User {
 
     private String type;
 
-    private LocalDateTime registerDate;
+    private LocalDateTime visitTime;
+
+    public void updateVisitTime(LocalDateTime visitTime) {
+        this.visitTime = visitTime;
+    }
 
 }
