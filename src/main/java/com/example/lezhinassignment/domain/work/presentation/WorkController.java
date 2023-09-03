@@ -1,6 +1,7 @@
 package com.example.lezhinassignment.domain.work.presentation;
 
 import com.example.lezhinassignment.domain.user.presentation.dto.response.UserResponse;
+import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteCommentRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteWorkRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
@@ -21,6 +22,7 @@ public class WorkController {
     private final AddLikeService addLikeService;
     private final AddDisLikeService addDisLikeService;
     private final WriteCommentService writeCommentService;
+    private final GetPopularWorkService getPopularWorkService;
 
     @PostMapping("/work")
     public void writeWork(@Valid @RequestBody WriteWorkRequest request) {
@@ -37,7 +39,7 @@ public class WorkController {
         addDisLikeService.addDisLike(workId);
     }
 
-    @PostMapping("work/comment/{workId}")
+    @PostMapping("/work/comment/{workId}")
     public void writeComment(@Valid @RequestBody WriteCommentRequest request, @PathVariable Long workId) {
         writeCommentService.writeComment(request, workId);
     }
@@ -47,9 +49,14 @@ public class WorkController {
         return getWorkService.getWork(workId);
     }
 
-    @GetMapping("/work-record/{workId}")
+    @GetMapping("/work/record/{workId}")
     public List<UserResponse> getWorkRecord(@PathVariable Long workId) {
         return getWorkRecordService.getWorkRecord(workId);
+    }
+
+    @GetMapping("/work/popular")
+    public List<Work> getPopularWork() {
+        return getPopularWorkService.getPopularWork();
     }
 
 }
