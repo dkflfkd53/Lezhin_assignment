@@ -1,4 +1,4 @@
-package com.example.lezhinassignment.domain.user.dto.response;
+package com.example.lezhinassignment.domain.user.presentation.dto.response;
 
 import com.example.lezhinassignment.domain.user.entity.User;
 import lombok.AllArgsConstructor;

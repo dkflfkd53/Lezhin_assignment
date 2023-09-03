@@ -2,7 +2,7 @@ package com.example.lezhinassignment.domain.work.service;
 
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.service.facade.UserFacade;
-import com.example.lezhinassignment.domain.work.dto.response.WorkResponse;
+import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
 import com.example.lezhinassignment.domain.work.entity.Visit;
 import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.repository.VisitRepository;

@@ -1,4 +1,4 @@
-package com.example.lezhinassignment.domain.user.dto.request;
+package com.example.lezhinassignment.domain.user.presentation.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Getter;

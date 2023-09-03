@@ -1,9 +1,8 @@
-package com.example.lezhinassignment.domain.work.controller;
+package com.example.lezhinassignment.domain.work.presentation;
 
-import com.example.lezhinassignment.domain.user.dto.response.UserResponse;
-import com.example.lezhinassignment.domain.user.entity.User;
-import com.example.lezhinassignment.domain.work.dto.request.WriteWorkRequest;
-import com.example.lezhinassignment.domain.work.dto.response.WorkResponse;
+import com.example.lezhinassignment.domain.user.presentation.dto.response.UserResponse;
+import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteWorkRequest;
+import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
 import com.example.lezhinassignment.domain.work.service.GetWorkRecordService;
 import com.example.lezhinassignment.domain.work.service.GetWorkService;
 import com.example.lezhinassignment.domain.work.service.WriteWorkService;

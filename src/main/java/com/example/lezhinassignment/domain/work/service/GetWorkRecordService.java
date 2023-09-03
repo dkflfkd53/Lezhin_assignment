@@ -1,7 +1,6 @@
 package com.example.lezhinassignment.domain.work.service;
 
-import com.example.lezhinassignment.domain.user.dto.response.UserResponse;
-import com.example.lezhinassignment.domain.user.entity.User;
+import com.example.lezhinassignment.domain.user.presentation.dto.response.UserResponse;
 import com.example.lezhinassignment.domain.user.repository.UserRepository;
 import com.example.lezhinassignment.domain.work.entity.Visit;
 import com.example.lezhinassignment.domain.work.repository.VisitRepository;

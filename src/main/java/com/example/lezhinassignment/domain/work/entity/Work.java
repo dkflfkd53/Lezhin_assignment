@@ -22,4 +22,7 @@ public class Work {
     @NotNull
     private String title;
 
+    @NotNull
+    private String type;
+
 }

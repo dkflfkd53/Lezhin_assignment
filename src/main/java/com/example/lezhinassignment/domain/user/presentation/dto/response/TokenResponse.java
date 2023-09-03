@@ -1,4 +1,4 @@
-package com.example.lezhinassignment.domain.user.dto.response;
+package com.example.lezhinassignment.domain.user.presentation.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,8 +1,8 @@
-package com.example.lezhinassignment.domain.user.controller;
+package com.example.lezhinassignment.domain.user.presentation;
 
-import com.example.lezhinassignment.domain.user.dto.request.LoginRequest;
-import com.example.lezhinassignment.domain.user.dto.request.SignupRequest;
-import com.example.lezhinassignment.domain.user.dto.response.TokenResponse;
+import com.example.lezhinassignment.domain.user.presentation.dto.request.LoginRequest;
+import com.example.lezhinassignment.domain.user.presentation.dto.request.SignupRequest;
+import com.example.lezhinassignment.domain.user.presentation.dto.response.TokenResponse;
 import com.example.lezhinassignment.domain.user.service.UserLoginService;
 import com.example.lezhinassignment.domain.user.service.UserSignupService;
 import lombok.RequiredArgsConstructor;
