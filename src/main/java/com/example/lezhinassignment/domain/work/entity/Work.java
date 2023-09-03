@@ -1,5 +1,6 @@
 package com.example.lezhinassignment.domain.work.entity;
 
+import com.example.lezhinassignment.domain.work.enums.WorkType;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -23,6 +24,6 @@ public class Work {
     private String title;
 
     @NotNull
-    private String type;
+    private WorkType workType;
 
 }
