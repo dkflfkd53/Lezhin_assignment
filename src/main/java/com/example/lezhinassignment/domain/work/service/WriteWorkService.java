@@ -16,7 +16,7 @@ public class WriteWorkService {
         workRepository.save(
                 Work.builder()
                         .title(request.getTitle())
-                        .type(request.getType())
+                        .workType(request.getWorkType())
                         .build());
     }
 }
