@@ -17,6 +17,7 @@ public enum ErrorCode {
     USER_NOT_FOUND(404, "User not found"),
     PASSWORD_MISMATCH(404, "Password mismatch"),
     ALREADY_COMMENT(404, "Already write comment"),
+    ALREADY_LIKE(404, "Already like"),
 
     //work
     WORK_NOT_FOUND(404, "Work not found"),
