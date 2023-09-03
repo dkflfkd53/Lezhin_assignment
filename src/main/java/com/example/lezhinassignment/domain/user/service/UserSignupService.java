@@ -24,7 +24,6 @@ public class UserSignupService {
                         .password(password)
                         .gender(request.getGender())
                         .type(request.getType())
-                        .registerDate(request.getRegisterDate())
                         .build());
     }
 

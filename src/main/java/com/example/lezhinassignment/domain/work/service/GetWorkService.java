@@ -29,11 +29,12 @@ public class GetWorkService {
 
         User user = userFacade.currentUser();
 
+        user.updateVisitTime(now);
+
         visitRepository.save(
                 Visit.builder()
                         .workId(work.getId())
                         .userId(user.getId())
-                        .visitTime(now)
                         .build());
 
         return new WorkResponse(work);
