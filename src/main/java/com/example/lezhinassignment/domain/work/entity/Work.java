@@ -1,11 +1,12 @@
 package com.example.lezhinassignment.domain.work.entity;
 
-import com.example.lezhinassignment.domain.user.entity.User;
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 @Getter
@@ -20,12 +21,5 @@ public class Work {
 
     @NotNull
     private String title;
-
-    @OneToMany
-    private List<User> inquiryUser;
-
-    public void plusUser(User user) {
-        inquiryUser.add(user);
-    }
 
 }
