@@ -1,5 +1,6 @@
 package com.example.lezhinassignment.domain.work.presentation.dto.request;
 
+import com.example.lezhinassignment.domain.work.enums.WorkType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class WriteWorkRequest {
     private String title;
 
-    private String type;
+    private WorkType workType;
 }
