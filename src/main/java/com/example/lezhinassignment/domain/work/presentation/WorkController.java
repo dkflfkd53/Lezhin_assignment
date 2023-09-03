@@ -2,6 +2,7 @@ package com.example.lezhinassignment.domain.work.presentation;
 
 import com.example.lezhinassignment.domain.user.presentation.dto.response.UserResponse;
 import com.example.lezhinassignment.domain.work.entity.Work;
+import com.example.lezhinassignment.domain.work.presentation.dto.request.ModifyPriceRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteCommentRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteWorkRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
@@ -24,6 +25,7 @@ public class WorkController {
     private final WriteCommentService writeCommentService;
     private final GetPopularWorkService getPopularWorkService;
     private final GetUnpopularWorkService getUnpopularWorkService;
+    private final ModifyPriceService modifyPriceService;
 
     @PostMapping("/work")
     public void writeWork(@Valid @RequestBody WriteWorkRequest request) {
@@ -63,6 +65,11 @@ public class WorkController {
     @GetMapping("/work/unpopular")
     public List<Work> getUnpopularWork() {
         return getUnpopularWorkService.getUnpopularWork();
+    }
+
+    @PatchMapping("/work/price/{workId}")
+    public void modifyPrice(@Valid @RequestBody ModifyPriceRequest request, @PathVariable Long workId) {
+        modifyPriceService.modifyPrice(request, workId);
     }
 
 }

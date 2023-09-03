@@ -29,4 +29,8 @@ public class Work {
     @NotNull
     private Long price;
 
+    public void modifyPrice(Long price) {
+        this.price = price;
+    }
+
 }
