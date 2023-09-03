@@ -1,15 +1,16 @@
 package com.example.lezhinassignment.domain.work.controller;
 
+import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.work.dto.request.WriteWorkRequest;
 import com.example.lezhinassignment.domain.work.dto.response.WorkResponse;
 import com.example.lezhinassignment.domain.work.service.GetWorkRecordService;
 import com.example.lezhinassignment.domain.work.service.GetWorkService;
 import com.example.lezhinassignment.domain.work.service.WriteWorkService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class WorkController {
     private final GetWorkRecordService getWorkRecordService;
 
     @PostMapping("/work")
-    public void writeWork(WriteWorkRequest request) {
+    public void writeWork(@Valid @RequestBody WriteWorkRequest request) {
         writeWorkService.writeWork(request);
     }
 
@@ -30,8 +31,8 @@ public class WorkController {
     }
 
     @GetMapping("/work-record/{workId}")
-    public WorkRecordResponse getWorkRecord(@PathVariable Long wordId) {
-        return getWorkRecordService.getWorkRecord(wordId);
+    public List<User> getWorkRecord(@PathVariable Long workId) {
+        return getWorkRecordService.getWorkRecord(workId);
     }
 
 }

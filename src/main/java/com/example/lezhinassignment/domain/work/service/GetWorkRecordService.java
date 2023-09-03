@@ -1,21 +1,29 @@
 package com.example.lezhinassignment.domain.work.service;
 
-import com.example.lezhinassignment.domain.work.entity.Work;
-import com.example.lezhinassignment.domain.work.repository.WorkRepository;
-import com.example.lezhinassignment.global.exception.work.WorkNotFoundException;
+import com.example.lezhinassignment.domain.user.entity.User;
+import com.example.lezhinassignment.domain.user.repository.UserRepository;
+import com.example.lezhinassignment.domain.work.entity.Visit;
+import com.example.lezhinassignment.domain.work.repository.VisitRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class GetWorkRecordService {
 
-    private final WorkRepository workRepository;
+    private final VisitRepository visitRepository;
+    private final UserRepository userRepository;
 
-    public WorkRecordResponse getWorkRecord(Long workId) {
-        Work work = workRepository.findById(workId)
-                .orElseThrow(()-> WorkNotFoundException.EXCEPTION);
+    public List<User> getWorkRecord(Long workId) {
+        List<Long> ids = visitRepository.findAllByWorkId(workId)
+                .stream()
+                .map(Visit::getUserId)
+                .collect(Collectors.toList());
 
-        return new WorRecordResponse
+        return userRepository.findAllById(ids);
     }
+
 }
