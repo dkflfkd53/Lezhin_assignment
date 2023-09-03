@@ -23,6 +23,7 @@ public class WorkController {
     private final AddDisLikeService addDisLikeService;
     private final WriteCommentService writeCommentService;
     private final GetPopularWorkService getPopularWorkService;
+    private final GetUnpopularWorkService getUnpopularWorkService;
 
     @PostMapping("/work")
     public void writeWork(@Valid @RequestBody WriteWorkRequest request) {
@@ -57,6 +58,11 @@ public class WorkController {
     @GetMapping("/work/popular")
     public List<Work> getPopularWork() {
         return getPopularWorkService.getPopularWork();
+    }
+
+    @GetMapping("/work/unpopular")
+    public List<Work> getUnpopularWork() {
+        return getUnpopularWorkService.getUnpopularWork();
     }
 
 }
