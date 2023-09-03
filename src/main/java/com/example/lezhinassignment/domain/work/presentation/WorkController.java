@@ -1,11 +1,10 @@
 package com.example.lezhinassignment.domain.work.presentation;
 
 import com.example.lezhinassignment.domain.user.presentation.dto.response.UserResponse;
+import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteCommentRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteWorkRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
-import com.example.lezhinassignment.domain.work.service.GetWorkRecordService;
-import com.example.lezhinassignment.domain.work.service.GetWorkService;
-import com.example.lezhinassignment.domain.work.service.WriteWorkService;
+import com.example.lezhinassignment.domain.work.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +18,28 @@ public class WorkController {
     private final WriteWorkService writeWorkService;
     private final GetWorkService getWorkService;
     private final GetWorkRecordService getWorkRecordService;
+    private final AddLikeService addLikeService;
+    private final AddDisLikeService addDisLikeService;
+    private final WriteCommentService writeCommentService;
 
     @PostMapping("/work")
     public void writeWork(@Valid @RequestBody WriteWorkRequest request) {
         writeWorkService.writeWork(request);
+    }
+
+    @PostMapping("/work/like/{workId}")
+    public void addLike(@PathVariable Long workId) {
+        addLikeService.addLike(workId);
+    }
+
+    @PostMapping("/work/dis-like/{workId}")
+    public void addDisLike(@PathVariable Long workId) {
+        addDisLikeService.addDisLike(workId);
+    }
+
+    @PostMapping("work/comment/{workId}")
+    public void writeComment(@Valid @RequestBody WriteCommentRequest request, @PathVariable Long workId) {
+        writeCommentService.writeComment(request, workId);
     }
 
     @GetMapping("/work/{workId}")
