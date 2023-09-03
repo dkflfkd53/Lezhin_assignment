@@ -26,7 +26,7 @@ public class WriteCommentService {
             throw WorkNotFoundException.EXCEPTION;
         }
 
-        if(commentRepository.findByUserId(user.getId()).isPresent()) {
+        if(commentRepository.findByUserIdAndWorkId(user.getId(), workId).isPresent()) {
             throw AlreadyCommentException.EXCEPTION;
         }
 
