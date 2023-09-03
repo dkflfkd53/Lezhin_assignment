@@ -11,6 +11,8 @@ import com.example.lezhinassignment.global.exception.work.WorkNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class GetWorkService {
@@ -20,6 +22,8 @@ public class GetWorkService {
     private final UserFacade userFacade;
 
     public WorkResponse getWork(Long workId) {
+        LocalDateTime now = LocalDateTime.now();
+
         Work work = workRepository.findById(workId)
                 .orElseThrow(()-> WorkNotFoundException.EXCEPTION);
 
@@ -29,6 +33,7 @@ public class GetWorkService {
                 Visit.builder()
                         .workId(work.getId())
                         .userId(user.getId())
+                        .visitTime(now)
                         .build());
 
         return new WorkResponse(work);
