@@ -1,40 +1,37 @@
 package com.example.lezhinassignment.domain.work.service;
 
-import com.example.lezhinassignment.domain.work.entity.Like;
+import com.example.lezhinassignment.domain.work.entity.QLike;
+import com.example.lezhinassignment.domain.work.entity.QWork;
 import com.example.lezhinassignment.domain.work.entity.Work;
-import com.example.lezhinassignment.domain.work.repository.LikeRepository;
-import com.example.lezhinassignment.domain.work.repository.WorkRepository;
+import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class GetPopularWorkService {
 
-    private final WorkRepository workRepository;
-    private final LikeRepository likeRepository;
+    private final JPAQueryFactory queryFactory;
 
-    public List<Work> getPopularWork() {
-        List<Long> workIds = likeRepository.findAll()
-                .stream()
-                .collect(Collectors.groupingBy(Like::getWorkId, Collectors.counting()))
-                .entrySet()
-                .stream()
-                .sorted(Map.Entry.<Long, Long>comparingByValue().reversed())
+    public List<WorkResponse> getPopularWork() {
+        QWork work = new QWork("works");
+        QLike like = new QLike("likes");
+
+        List<Work> works = queryFactory
+                .selectFrom(work)
+                .leftJoin(work.likes, like)
+                .groupBy(work)
+                .orderBy(like.count().desc())
                 .limit(3)
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
+                .fetch();
 
-        return workIds
+        return works
                 .stream()
-                .map(workRepository::findById)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
+                .map(WorkResponse::new)
                 .collect(Collectors.toList());
     }
 
