@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -19,7 +20,13 @@ public class QWork extends EntityPathBase<Work> {
 
     public static final QWork work = new QWork("work");
 
+    public final ListPath<Comment, QComment> comments = this.<Comment, QComment>createList("comments", Comment.class, QComment.class, PathInits.DIRECT2);
+
+    public final ListPath<DisLike, QDisLike> disLikes = this.<DisLike, QDisLike>createList("disLikes", DisLike.class, QDisLike.class, PathInits.DIRECT2);
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public final ListPath<Like, QLike> likes = this.<Like, QLike>createList("likes", Like.class, QLike.class, PathInits.DIRECT2);
 
     public final NumberPath<Long> price = createNumber("price", Long.class);
 

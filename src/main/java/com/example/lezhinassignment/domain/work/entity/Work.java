@@ -3,11 +3,9 @@ package com.example.lezhinassignment.domain.work.entity;
 import com.example.lezhinassignment.domain.work.enums.WorkType;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,8 +27,29 @@ public class Work {
     @NotNull
     private Long price;
 
+    @ManyToMany
+    private List<Like> likes;
+
+    @ManyToMany
+    private List<DisLike> disLikes;
+
+    @ManyToMany
+    private List<Comment> comments;
+
     public void modifyPrice(Long price) {
         this.price = price;
+    }
+
+    public void addLike(Like like) {
+        likes.add(like);
+    }
+
+    public void addDisLike(DisLike disLike) {
+        disLikes.add(disLike);
+    }
+
+    public void writeComment(Comment comment) {
+        comments.add(comment);
     }
 
 }
