@@ -16,65 +16,76 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WorkController {
 
+    //work
     private final WriteWorkService writeWorkService;
     private final GetWorkService getWorkService;
     private final GetWorkRecordService getWorkRecordService;
-    private final AddLikeService addLikeService;
-    private final AddDisLikeService addDisLikeService;
-    private final WriteCommentService writeCommentService;
-    private final GetPopularWorkService getPopularWorkService;
-    private final GetUnpopularWorkService getUnpopularWorkService;
     private final ModifyPriceService modifyPriceService;
+
+    //like
+    private final AddLikeService addLikeService;
+    private final GetPopularWorkService getPopularWorkService;
     private final CancelLikeService cancelLikeService;
 
+    //dislike
+    private final AddDisLikeService addDisLikeService;
+    private final GetUnpopularWorkService getUnpopularWorkService;
+    private final CancelDisLikeService cancelDisLikeService;
+
+    //comment
+    private final WriteCommentService writeCommentService;
+
+
+    //work
     @PostMapping("/work")
     public void writeWork(@Valid @RequestBody WriteWorkRequest request) {
         writeWorkService.writeWork(request);
     }
-
-    @PostMapping("/work/like/{workId}")
-    public void addLike(@PathVariable Long workId) {
-        addLikeService.addLike(workId);
-    }
-
-    @PostMapping("/work/dis-like/{workId}")
-    public void addDisLike(@PathVariable Long workId) {
-        addDisLikeService.addDisLike(workId);
-    }
-
-    @PostMapping("/work/comment/{workId}")
-    public void writeComment(@Valid @RequestBody WriteCommentRequest request, @PathVariable Long workId) {
-        writeCommentService.writeComment(request, workId);
-    }
-
     @GetMapping("/work/{workId}")
     public WorkResponse getWork(@PathVariable Long workId) {
         return getWorkService.getWork(workId);
     }
-
     @GetMapping("/work/record/{workId}")
     public List<UserResponse> getWorkRecord(@PathVariable Long workId) {
         return getWorkRecordService.getWorkRecord(workId);
     }
-
-    @GetMapping("/work/popular")
-    public List<WorkResponse> getPopularWork() {
-        return getPopularWorkService.getPopularWork();
-    }
-
-    @GetMapping("/work/unpopular")
-    public List<WorkResponse> getUnpopularWork() {
-        return getUnpopularWorkService.getUnpopularWork();
-    }
-
     @PatchMapping("/work/price/{workId}")
     public void modifyPrice(@Valid @RequestBody ModifyPriceRequest request, @PathVariable Long workId) {
         modifyPriceService.modifyPrice(request, workId);
     }
 
+    //like
+    @PostMapping("/work/like/{workId}")
+    public void addLike(@PathVariable Long workId) {
+        addLikeService.addLike(workId);
+    }
+    @GetMapping("/work/popular")
+    public List<WorkResponse> getPopularWork() {
+        return getPopularWorkService.getPopularWork();
+    }
     @DeleteMapping("/work/like/{workId}")
     public void cancelLike(@PathVariable Long workId) {
         cancelLikeService.cancelLike(workId);
+    }
+
+    //disLike
+    @PostMapping("/work/dis-like/{workId}")
+    public void addDisLike(@PathVariable Long workId) {
+        addDisLikeService.addDisLike(workId);
+    }
+    @GetMapping("/work/unpopular")
+    public List<WorkResponse> getUnpopularWork() {
+        return getUnpopularWorkService.getUnpopularWork();
+    }
+    @DeleteMapping("/work/dis-like/{workId}")
+    public void cancelDisLike(@PathVariable Long workId) {
+        cancelDisLikeService.cancelDisLike(workId);
+    }
+
+    //comment
+    @PostMapping("/work/comment/{workId}")
+    public void writeComment(@Valid @RequestBody WriteCommentRequest request, @PathVariable Long workId) {
+        writeCommentService.writeComment(request, workId);
     }
 
 }
