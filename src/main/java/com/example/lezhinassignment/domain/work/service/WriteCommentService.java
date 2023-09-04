@@ -3,6 +3,7 @@ package com.example.lezhinassignment.domain.work.service;
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.service.facade.UserFacade;
 import com.example.lezhinassignment.domain.work.entity.Comment;
+import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteCommentRequest;
 import com.example.lezhinassignment.domain.work.repository.CommentRepository;
 import com.example.lezhinassignment.domain.work.repository.WorkRepository;
@@ -22,21 +23,22 @@ public class WriteCommentService {
     public void writeComment(WriteCommentRequest request, Long workId) {
         User user = userFacade.currentUser();
 
-        if(!workRepository.existsById(workId)) {
-            throw WorkNotFoundException.EXCEPTION;
-        }
+        Work work = workRepository.findById(workId)
+                .orElseThrow(()->WorkNotFoundException.EXCEPTION);
 
         if(commentRepository.findByUserIdAndWorkId(user.getId(), workId).isPresent()) {
             throw AlreadyCommentException.EXCEPTION;
         }
 
-        commentRepository.save(
+        Comment comment = commentRepository.save(
                 Comment.builder()
                         .userId(user.getId())
                         .workId(workId)
                         .userName(user.getUserName())
                         .content(request.getContent())
                         .build());
+
+        work.writeComment(comment);
     }
 
 }
