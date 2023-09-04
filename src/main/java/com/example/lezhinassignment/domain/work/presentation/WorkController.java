@@ -1,7 +1,6 @@
 package com.example.lezhinassignment.domain.work.presentation;
 
 import com.example.lezhinassignment.domain.user.presentation.dto.response.UserResponse;
-import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.ModifyPriceRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteCommentRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteWorkRequest;
@@ -58,12 +57,12 @@ public class WorkController {
     }
 
     @GetMapping("/work/popular")
-    public List<Work> getPopularWork() {
+    public List<WorkResponse> getPopularWork() {
         return getPopularWorkService.getPopularWork();
     }
 
     @GetMapping("/work/unpopular")
-    public List<Work> getUnpopularWork() {
+    public List<WorkResponse> getUnpopularWork() {
         return getUnpopularWorkService.getUnpopularWork();
     }
 
