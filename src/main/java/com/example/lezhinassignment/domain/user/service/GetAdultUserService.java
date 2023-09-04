@@ -21,7 +21,7 @@ public class GetAdultUserService {
         QUser qUser = new QUser("user");
         QWork qWork = new QWork("work");
 
-        List<User> adultUser2 = queryFactory
+        List<User> adultUser = queryFactory
                 .selectFrom(qUser)
                 .join(qUser.AdultWork, qWork)
                 .groupBy(qUser)
@@ -29,7 +29,7 @@ public class GetAdultUserService {
                 .fetch();
 
 
-        return adultUser2
+        return adultUser
                 .stream()
                 .map(AdultUserResponse::new)
                 .collect(Collectors.toList());
