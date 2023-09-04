@@ -1,6 +1,7 @@
+//querydsl 추가
 buildscript {
     ext {
-        queryDslVersion = "4.4.0"
+        queryDslVersion = "5.0.0"
     }
 }
 
@@ -8,6 +9,9 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.15'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+
+    //querydsl 추가
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
 }
 
 group = 'com.example'
@@ -38,23 +42,37 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    // QueryDSL
+    //querydsl 추가
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+
     annotationProcessor(
             "javax.persistence:javax.persistence-api",
-            "javax.annotation:javax.annotation-api",
-            "com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
-}
-
-// QueryDSL
-sourceSets {
-    main {
-        java {
-            srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
-        }
-    }
+            "javax.annotation:jsr250-api",
+            "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
+    )
+    annotationProcessor 'javax.annotation:jsr250-api:1.0'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+apply plugin: 'com.ewerk.gradle.plugins.querydsl'
+
+def queryDslSourceDir = 'src/main/generated'
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = queryDslSourceDir
+}
+sourceSets {
+    main.java.srcDir queryDslSourceDir
+}
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
