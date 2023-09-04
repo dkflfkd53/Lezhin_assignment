@@ -7,5 +7,4 @@ import java.util.Optional;
 
 public interface DisLikeRepository extends JpaRepository<DisLike, Long> {
     Optional<DisLike> findByUserIdAndWorkId(Long userId, Long workId);
-    void deleteByWorkId(Long workId);
 }
