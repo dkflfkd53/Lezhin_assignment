@@ -52,4 +52,12 @@ public class Work {
         comments.add(comment);
     }
 
+    public void removeLike(Like like) {
+        likes.remove(like);
+    }
+
+    public void removeDisLike(DisLike disLike) {
+        disLikes.remove(disLike);
+    }
+
 }
