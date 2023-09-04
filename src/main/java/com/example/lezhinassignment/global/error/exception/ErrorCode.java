@@ -23,6 +23,7 @@ public enum ErrorCode {
     //work
     WORK_NOT_FOUND(404, "Work not found"),
     LIKE_NOT_FOUND(404, "Like not found"),
+    DIS_LIKE_NOT_FOUND(404, "DisLike not found"),
 
     // general
     BAD_REQUEST(400, "Bad request"),
