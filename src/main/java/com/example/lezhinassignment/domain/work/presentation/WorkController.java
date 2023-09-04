@@ -25,6 +25,7 @@ public class WorkController {
     private final GetPopularWorkService getPopularWorkService;
     private final GetUnpopularWorkService getUnpopularWorkService;
     private final ModifyPriceService modifyPriceService;
+    private final CancelLikeService cancelLikeService;
 
     @PostMapping("/work")
     public void writeWork(@Valid @RequestBody WriteWorkRequest request) {
@@ -69,6 +70,11 @@ public class WorkController {
     @PatchMapping("/work/price/{workId}")
     public void modifyPrice(@Valid @RequestBody ModifyPriceRequest request, @PathVariable Long workId) {
         modifyPriceService.modifyPrice(request, workId);
+    }
+
+    @DeleteMapping("/work/like/{workId}")
+    public void cancelLike(@PathVariable Long workId) {
+        cancelLikeService.cancelLike(workId);
     }
 
 }
