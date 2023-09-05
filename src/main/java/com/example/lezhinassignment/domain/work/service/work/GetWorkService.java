@@ -18,17 +18,17 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class GetWorkService {
 
+    private final UserFacade userFacade;
     private final WorkRepository workRepository;
     private final VisitRepository visitRepository;
-    private final UserFacade userFacade;
 
     public WorkResponse getWork(Long workId) {
         LocalDateTime now = LocalDateTime.now();
 
+        User user = userFacade.currentUser();
+
         Work work = workRepository.findById(workId)
                 .orElseThrow(()-> WorkNotFoundException.EXCEPTION);
-
-        User user = userFacade.currentUser();
 
         if(work.getWorkType() == WorkType.ADULT)user.addAdultWork(work);
 

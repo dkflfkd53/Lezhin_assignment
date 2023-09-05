@@ -21,10 +21,10 @@ import java.util.Optional;
 @Transactional
 public class AddDisLikeService {
 
+    private final UserFacade userFacade;
+    private final WorkRepository workRepository;
     private final DisLikeRepository disLikeRepository;
     private final LikeRepository likeRepository;
-    private final WorkRepository workRepository;
-    private final UserFacade userFacade;
 
     public void addDisLike(Long workId) {
         User user = userFacade.currentUser();

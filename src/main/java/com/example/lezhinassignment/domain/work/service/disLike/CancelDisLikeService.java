@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CancelDisLikeService {
 
+    private final UserFacade userFacade;
     private final WorkRepository workRepository;
     private final DisLikeRepository disLikeRepository;
-    private final UserFacade userFacade;
 
     public void cancelDisLike(Long workId) {
         User user = userFacade.currentUser();

@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CancelLikeService {
 
-    private final LikeRepository likeRepository;
-    private final WorkRepository workRepository;
     private final UserFacade userFacade;
+    private final WorkRepository workRepository;
+    private final LikeRepository likeRepository;
 
     public void cancelLike(Long workId) {
         User user = userFacade.currentUser();

@@ -16,9 +16,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class WriteCommentService {
 
-    private final CommentRepository commentRepository;
-    private final WorkRepository workRepository;
     private final UserFacade userFacade;
+    private final WorkRepository workRepository;
+    private final CommentRepository commentRepository;
 
     public void writeComment(WriteCommentRequest request, Long workId) {
         User user = userFacade.currentUser();
