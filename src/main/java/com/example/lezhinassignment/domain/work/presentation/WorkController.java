@@ -34,6 +34,7 @@ public class WorkController {
 
     //comment
     private final WriteCommentService writeCommentService;
+    private final DeleteCommentService deleteCommentService;
 
 
     //work
@@ -86,6 +87,10 @@ public class WorkController {
     @PostMapping("/work/comment/{workId}")
     public void writeComment(@Valid @RequestBody WriteCommentRequest request, @PathVariable Long workId) {
         writeCommentService.writeComment(request, workId);
+    }
+    @DeleteMapping("/work/comment/{workId}")
+    public void deleteComment(@PathVariable Long workId) {
+        deleteCommentService.deleteComment(workId);
     }
 
 }
