@@ -6,7 +6,19 @@ import com.example.lezhinassignment.domain.work.presentation.dto.request.ModifyP
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteCommentRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteWorkRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
-import com.example.lezhinassignment.domain.work.service.*;
+import com.example.lezhinassignment.domain.work.service.comment.DeleteCommentService;
+import com.example.lezhinassignment.domain.work.service.comment.ModifyCommentService;
+import com.example.lezhinassignment.domain.work.service.comment.WriteCommentService;
+import com.example.lezhinassignment.domain.work.service.disLike.AddDisLikeService;
+import com.example.lezhinassignment.domain.work.service.disLike.CancelDisLikeService;
+import com.example.lezhinassignment.domain.work.service.disLike.GetUnpopularWorkService;
+import com.example.lezhinassignment.domain.work.service.like.AddLikeService;
+import com.example.lezhinassignment.domain.work.service.like.CancelLikeService;
+import com.example.lezhinassignment.domain.work.service.like.GetPopularWorkService;
+import com.example.lezhinassignment.domain.work.service.work.GetWorkRecordService;
+import com.example.lezhinassignment.domain.work.service.work.GetWorkService;
+import com.example.lezhinassignment.domain.work.service.work.ModifyPriceService;
+import com.example.lezhinassignment.domain.work.service.work.WriteWorkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.example.lezhinassignment.domain.work.service;
+package com.example.lezhinassignment.domain.work.service.comment;
 
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.service.facade.UserFacade;

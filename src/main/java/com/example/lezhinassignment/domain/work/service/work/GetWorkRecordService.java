@@ -1,4 +1,4 @@
-package com.example.lezhinassignment.domain.work.service;
+package com.example.lezhinassignment.domain.work.service.work;
 
 import com.example.lezhinassignment.domain.user.presentation.dto.response.UserResponse;
 import com.example.lezhinassignment.domain.user.repository.UserRepository;

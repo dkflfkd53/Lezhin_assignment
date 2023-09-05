@@ -1,29 +1,35 @@
-package com.example.lezhinassignment.domain.work.service;
+package com.example.lezhinassignment.domain.work.service.comment;
 
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.service.facade.UserFacade;
 import com.example.lezhinassignment.domain.work.entity.Comment;
-import com.example.lezhinassignment.domain.work.presentation.dto.request.CommentRequest;
+import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.repository.CommentRepository;
+import com.example.lezhinassignment.domain.work.repository.WorkRepository;
 import com.example.lezhinassignment.global.exception.work.CommentNotFoundException;
+import com.example.lezhinassignment.global.exception.work.WorkNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
-public class ModifyCommentService {
+public class DeleteCommentService {
 
     private final UserFacade userFacade;
+    private final WorkRepository workRepository;
     private final CommentRepository commentRepository;
 
-    public void modifyComment(CommentRequest request, Long workId) {
+    public void deleteComment(Long workId) {
         User user = userFacade.currentUser();
+
+        Work work = workRepository.findById(workId)
+                .orElseThrow(()-> WorkNotFoundException.EXCEPTION);
 
         Comment comment = commentRepository.findByUserIdAndWorkId(user.getId(), workId)
                 .orElseThrow(()-> CommentNotFoundException.EXCEPTION);
 
-        comment.modifyComment(request.getContent());
+        work.deleteComment(comment);
+        commentRepository.delete(comment);
     }
+
 }

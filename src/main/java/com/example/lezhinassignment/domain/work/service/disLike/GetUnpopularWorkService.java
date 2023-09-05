@@ -1,4 +1,4 @@
-package com.example.lezhinassignment.domain.work.service;
+package com.example.lezhinassignment.domain.work.service.disLike;
 
 import com.example.lezhinassignment.domain.work.entity.QDisLike;
 import com.example.lezhinassignment.domain.work.entity.QWork;

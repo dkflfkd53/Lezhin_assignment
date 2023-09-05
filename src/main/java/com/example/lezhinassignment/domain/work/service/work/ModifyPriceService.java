@@ -1,4 +1,4 @@
-package com.example.lezhinassignment.domain.work.service;
+package com.example.lezhinassignment.domain.work.service.work;
 
 import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.ModifyPriceRequest;
