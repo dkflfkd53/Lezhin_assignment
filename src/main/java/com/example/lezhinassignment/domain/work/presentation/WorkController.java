@@ -1,6 +1,7 @@
 package com.example.lezhinassignment.domain.work.presentation;
 
 import com.example.lezhinassignment.domain.user.presentation.dto.response.UserResponse;
+import com.example.lezhinassignment.domain.work.presentation.dto.request.CommentRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.ModifyPriceRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteCommentRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteWorkRequest;
@@ -34,6 +35,7 @@ public class WorkController {
 
     //comment
     private final WriteCommentService writeCommentService;
+    private final ModifyCommentService modifyCommentService;
     private final DeleteCommentService deleteCommentService;
 
 
@@ -87,6 +89,10 @@ public class WorkController {
     @PostMapping("/work/comment/{workId}")
     public void writeComment(@Valid @RequestBody WriteCommentRequest request, @PathVariable Long workId) {
         writeCommentService.writeComment(request, workId);
+    }
+    @PatchMapping("/work/comment/{workId}")
+    public void modifyComment(@Valid @RequestBody CommentRequest request, @PathVariable Long workId) {
+        modifyCommentService.modifyComment(request, workId);
     }
     @DeleteMapping("/work/comment/{workId}")
     public void deleteComment(@PathVariable Long workId) {
