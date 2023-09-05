@@ -36,7 +36,7 @@ public class GetWorkService {
 
         visitRepository.save(
                 Visit.builder()
-                        .workId(work.getId())
+                        .workId(workId)
                         .userId(user.getId())
                         .build());
 
