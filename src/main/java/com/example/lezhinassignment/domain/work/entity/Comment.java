@@ -26,4 +26,8 @@ public class Comment {
 
     private String content;
 
+    public void modifyComment(String content) {
+        this.content = content;
+    }
+
 }
