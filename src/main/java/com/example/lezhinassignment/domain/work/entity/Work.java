@@ -60,4 +60,8 @@ public class Work {
         disLikes.remove(disLike);
     }
 
+    public void deleteComment(Comment comment) {
+        comments.remove(comment);
+    }
+
 }
