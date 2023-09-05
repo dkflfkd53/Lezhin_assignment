@@ -31,4 +31,5 @@ public class CancelLikeService {
         work.removeLike(like);
         likeRepository.delete(like);
     }
+
 }
