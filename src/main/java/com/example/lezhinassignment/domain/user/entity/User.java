@@ -36,7 +36,7 @@ public class User {
 
     private LocalDateTime visitTime;
 
-    @ManyToMany
+    @OneToMany
     private List<Work> AdultWork;
 
     public void updateVisitTime(LocalDateTime visitTime) {

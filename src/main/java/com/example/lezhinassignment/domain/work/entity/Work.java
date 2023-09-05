@@ -27,13 +27,13 @@ public class Work {
     @NotNull
     private Long price;
 
-    @ManyToMany
+    @OneToMany
     private List<Like> likes;
 
-    @ManyToMany
+    @OneToMany
     private List<DisLike> disLikes;
 
-    @ManyToMany
+    @OneToMany
     private List<Comment> comments;
 
     public void modifyPrice(Long price) {
