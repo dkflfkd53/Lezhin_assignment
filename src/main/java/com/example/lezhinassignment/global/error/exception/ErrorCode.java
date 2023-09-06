@@ -15,10 +15,10 @@ public enum ErrorCode {
 
     //user
     USER_NOT_FOUND(404, "User not found"),
-    PASSWORD_MISMATCH(404, "Password mismatch"),
-    ALREADY_COMMENT(404, "Already write comment"),
-    ALREADY_LIKE(404, "Already like"),
-    ALREADY_DISLIKE(404, "Already dis_like"),
+    PASSWORD_MISMATCH(403, "Password mismatch"),
+    ALREADY_COMMENT(409, "Already write comment"),
+    ALREADY_LIKE(409, "Already like"),
+    ALREADY_DISLIKE(409, "Already dis_like"),
 
     //work
     WORK_NOT_FOUND(404, "Work not found"),
@@ -32,4 +32,5 @@ public enum ErrorCode {
 
     private final int statusCode;
     private final String message;
+
 }
