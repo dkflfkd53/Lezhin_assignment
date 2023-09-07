@@ -15,8 +15,6 @@ public class GetPopularWorkService {
     private final WorkRepository workRepository;
 
     public List<WorkResponse> getPopularWork() {
-
-
         return workRepository.findByDisLikes()
                 .stream()
                 .map(WorkResponse::new)

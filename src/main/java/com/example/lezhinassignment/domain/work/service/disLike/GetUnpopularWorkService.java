@@ -16,7 +16,6 @@ public class GetUnpopularWorkService {
     private final WorkRepository workRepository;
 
     public List<WorkResponse> getUnpopularWork() {
-
         return workRepository.findByLikes()
                 .stream()
                 .map(WorkResponse::new)
