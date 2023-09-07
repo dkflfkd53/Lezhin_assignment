@@ -1,10 +1,8 @@
 package com.example.lezhinassignment.domain.work.service.disLike;
 
-import com.example.lezhinassignment.domain.work.entity.QDisLike;
-import com.example.lezhinassignment.domain.work.entity.QWork;
 import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.example.lezhinassignment.domain.work.repository.WorkRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +13,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class GetUnpopularWorkService {
 
-    private final JPAQueryFactory queryFactory;
+    private final WorkRepository workRepository;
 
     public List<WorkResponse> getUnpopularWork() {
-        QWork work = new QWork("works");
-        QDisLike disLike = new QDisLike("disLikes");
 
-        List<Work> works =  queryFactory
-                .selectFrom(work)
-                .leftJoin(work.disLikes, disLike)
-                .groupBy(work)
-                .orderBy(disLike.count().desc())
-                .limit(3)
-                .fetch();
-
-        return works
+        return workRepository.findByLikes()
                 .stream()
                 .map(WorkResponse::new)
                 .collect(Collectors.toList());
