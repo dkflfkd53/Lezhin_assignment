@@ -1,10 +1,8 @@
 package com.example.lezhinassignment.domain.user.service;
 
-import com.example.lezhinassignment.domain.user.entity.QUser;
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.presentation.dto.response.AdultUserResponse;
-import com.example.lezhinassignment.domain.work.entity.QWork;
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.example.lezhinassignment.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,20 +13,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class GetAdultUserService {
 
-    private final JPAQueryFactory queryFactory;
+    private final UserRepository userRepository;
 
     public List<AdultUserResponse> getAdultUser() {
-        QUser qUser = new QUser("user");
-        QWork qWork = new QWork("work");
-
-        List<User> adultUser = queryFactory
-                .selectFrom(qUser)
-                .join(qUser.AdultWork, qWork)
-                .groupBy(qUser)
-                .having(qWork.id.countDistinct().goe(3))
-                .fetch();
-
-        return adultUser
+        return userRepository.getAdultUser()
                 .stream()
                 .map(AdultUserResponse::new)
                 .collect(Collectors.toList());
