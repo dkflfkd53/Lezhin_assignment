@@ -1,6 +1,5 @@
 package com.example.lezhinassignment.global.security.jwt;
 
-import com.example.lezhinassignment.domain.user.repository.UserRepository;
 import com.example.lezhinassignment.global.exception.token.ExpiredTokenException;
 import com.example.lezhinassignment.global.exception.token.InvalidTokenException;
 import com.example.lezhinassignment.global.security.auth.CustomUserDetailsService;

@@ -28,7 +28,6 @@ public class GetAdultUserService {
                 .having(qWork.id.countDistinct().goe(3))
                 .fetch();
 
-
         return adultUser
                 .stream()
                 .map(AdultUserResponse::new)
