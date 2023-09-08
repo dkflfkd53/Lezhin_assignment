@@ -1,6 +1,5 @@
 package com.example.lezhinassignment.domain.user.service;
 
-import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.presentation.dto.response.AdultUserResponse;
 import com.example.lezhinassignment.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
