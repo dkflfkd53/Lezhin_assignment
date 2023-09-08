@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,24 +18,36 @@ public class QVisit extends EntityPathBase<Visit> {
 
     private static final long serialVersionUID = -190547849L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QVisit visit = new QVisit("visit");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<Long> userId = createNumber("userId", Long.class);
+    public final com.example.lezhinassignment.domain.user.entity.QUser user;
 
-    public final NumberPath<Long> workId = createNumber("workId", Long.class);
+    public final QWork work;
 
     public QVisit(String variable) {
-        super(Visit.class, forVariable(variable));
+        this(Visit.class, forVariable(variable), INITS);
     }
 
     public QVisit(Path<? extends Visit> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QVisit(PathMetadata metadata) {
-        super(Visit.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QVisit(PathMetadata metadata, PathInits inits) {
+        this(Visit.class, metadata, inits);
+    }
+
+    public QVisit(Class<? extends Visit> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.user = inits.isInitialized("user") ? new com.example.lezhinassignment.domain.user.entity.QUser(forProperty("user")) : null;
+        this.work = inits.isInitialized("work") ? new QWork(forProperty("work")) : null;
     }
 
 }

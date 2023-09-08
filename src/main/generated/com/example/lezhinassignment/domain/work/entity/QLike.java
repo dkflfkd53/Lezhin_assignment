@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,24 +18,36 @@ public class QLike extends EntityPathBase<Like> {
 
     private static final long serialVersionUID = 1656123115L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QLike like = new QLike("like1");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<Long> userId = createNumber("userId", Long.class);
+    public final com.example.lezhinassignment.domain.user.entity.QUser user;
 
-    public final NumberPath<Long> workId = createNumber("workId", Long.class);
+    public final QWork work;
 
     public QLike(String variable) {
-        super(Like.class, forVariable(variable));
+        this(Like.class, forVariable(variable), INITS);
     }
 
     public QLike(Path<? extends Like> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QLike(PathMetadata metadata) {
-        super(Like.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QLike(PathMetadata metadata, PathInits inits) {
+        this(Like.class, metadata, inits);
+    }
+
+    public QLike(Class<? extends Like> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.user = inits.isInitialized("user") ? new com.example.lezhinassignment.domain.user.entity.QUser(forProperty("user")) : null;
+        this.work = inits.isInitialized("work") ? new QWork(forProperty("work")) : null;
     }
 
 }

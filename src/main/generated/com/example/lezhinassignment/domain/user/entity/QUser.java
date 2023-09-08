@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
-import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -19,8 +18,6 @@ public class QUser extends EntityPathBase<User> {
     private static final long serialVersionUID = 341215449L;
 
     public static final QUser user = new QUser("user");
-
-    public final ListPath<com.example.lezhinassignment.domain.work.entity.Work, com.example.lezhinassignment.domain.work.entity.QWork> AdultWork = this.<com.example.lezhinassignment.domain.work.entity.Work, com.example.lezhinassignment.domain.work.entity.QWork>createList("AdultWork", com.example.lezhinassignment.domain.work.entity.Work.class, com.example.lezhinassignment.domain.work.entity.QWork.class, PathInits.DIRECT2);
 
     public final StringPath gender = createString("gender");
 
