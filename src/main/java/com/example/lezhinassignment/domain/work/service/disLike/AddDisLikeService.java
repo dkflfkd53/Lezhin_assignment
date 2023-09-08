@@ -7,9 +7,8 @@ import com.example.lezhinassignment.domain.work.entity.Like;
 import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.repository.DisLikeRepository;
 import com.example.lezhinassignment.domain.work.repository.LikeRepository;
-import com.example.lezhinassignment.domain.work.repository.WorkRepository;
+import com.example.lezhinassignment.domain.work.service.facade.WorkFacade;
 import com.example.lezhinassignment.global.exception.user.AlreadyDisLikeException;
-import com.example.lezhinassignment.global.exception.work.WorkNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,15 +21,14 @@ import java.util.Optional;
 public class AddDisLikeService {
 
     private final UserFacade userFacade;
-    private final WorkRepository workRepository;
+    private final WorkFacade workFacade;
     private final DisLikeRepository disLikeRepository;
     private final LikeRepository likeRepository;
 
     public void addDisLike(Long workId) {
         User user = userFacade.currentUser();
 
-        Work work = workRepository.findById(workId)
-                .orElseThrow(()->WorkNotFoundException.EXCEPTION);
+        Work work = workFacade.currentWork(workId);
 
         if(disLikeRepository.findByUserIdAndWorkId(user.getId(), workId).isPresent()) {
             throw AlreadyDisLikeException.EXCEPTION;

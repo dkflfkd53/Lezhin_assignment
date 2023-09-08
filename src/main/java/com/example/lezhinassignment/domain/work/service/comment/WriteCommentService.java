@@ -6,9 +6,8 @@ import com.example.lezhinassignment.domain.work.entity.Comment;
 import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteCommentRequest;
 import com.example.lezhinassignment.domain.work.repository.CommentRepository;
-import com.example.lezhinassignment.domain.work.repository.WorkRepository;
+import com.example.lezhinassignment.domain.work.service.facade.WorkFacade;
 import com.example.lezhinassignment.global.exception.user.AlreadyCommentException;
-import com.example.lezhinassignment.global.exception.work.WorkNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +16,13 @@ import org.springframework.stereotype.Service;
 public class WriteCommentService {
 
     private final UserFacade userFacade;
-    private final WorkRepository workRepository;
+    private final WorkFacade workFacade;
     private final CommentRepository commentRepository;
 
     public void writeComment(WriteCommentRequest request, Long workId) {
         User user = userFacade.currentUser();
 
-        Work work = workRepository.findById(workId)
-                .orElseThrow(()->WorkNotFoundException.EXCEPTION);
+        Work work = workFacade.currentWork(workId);
 
         if(commentRepository.findByUserIdAndWorkId(user.getId(), workId).isPresent()) {
             throw AlreadyCommentException.EXCEPTION;

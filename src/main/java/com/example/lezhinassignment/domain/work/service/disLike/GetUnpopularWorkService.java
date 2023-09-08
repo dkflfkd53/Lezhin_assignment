@@ -1,6 +1,5 @@
 package com.example.lezhinassignment.domain.work.service.disLike;
 
-import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
 import com.example.lezhinassignment.domain.work.repository.WorkRepository;
 import lombok.RequiredArgsConstructor;

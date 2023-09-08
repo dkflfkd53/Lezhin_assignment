@@ -5,9 +5,8 @@ import com.example.lezhinassignment.domain.user.service.facade.UserFacade;
 import com.example.lezhinassignment.domain.work.entity.Like;
 import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.repository.LikeRepository;
-import com.example.lezhinassignment.domain.work.repository.WorkRepository;
+import com.example.lezhinassignment.domain.work.service.facade.WorkFacade;
 import com.example.lezhinassignment.global.exception.work.LikeNotFoundException;
-import com.example.lezhinassignment.global.exception.work.WorkNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +15,13 @@ import org.springframework.stereotype.Service;
 public class CancelLikeService {
 
     private final UserFacade userFacade;
-    private final WorkRepository workRepository;
+    private final WorkFacade workFacade;
     private final LikeRepository likeRepository;
 
     public void cancelLike(Long workId) {
         User user = userFacade.currentUser();
 
-        Work work = workRepository.findById(workId)
-                .orElseThrow(()-> WorkNotFoundException.EXCEPTION);
+        Work work = workFacade.currentWork(workId);
 
         Like like = likeRepository.findByUserIdAndWorkId(user.getId(), workId)
                 .orElseThrow(()-> LikeNotFoundException.EXCEPTION);

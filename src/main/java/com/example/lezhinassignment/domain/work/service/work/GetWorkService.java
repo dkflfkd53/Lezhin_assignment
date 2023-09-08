@@ -2,13 +2,12 @@ package com.example.lezhinassignment.domain.work.service.work;
 
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.user.service.facade.UserFacade;
-import com.example.lezhinassignment.domain.work.enums.WorkType;
-import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
 import com.example.lezhinassignment.domain.work.entity.Visit;
 import com.example.lezhinassignment.domain.work.entity.Work;
+import com.example.lezhinassignment.domain.work.enums.WorkType;
+import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
 import com.example.lezhinassignment.domain.work.repository.VisitRepository;
-import com.example.lezhinassignment.domain.work.repository.WorkRepository;
-import com.example.lezhinassignment.global.exception.work.WorkNotFoundException;
+import com.example.lezhinassignment.domain.work.service.facade.WorkFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,7 @@ import java.time.LocalDateTime;
 public class GetWorkService {
 
     private final UserFacade userFacade;
-    private final WorkRepository workRepository;
+    private final WorkFacade workFacade;
     private final VisitRepository visitRepository;
 
     public WorkResponse getWork(Long workId) {
@@ -27,8 +26,7 @@ public class GetWorkService {
 
         User user = userFacade.currentUser();
 
-        Work work = workRepository.findById(workId)
-                .orElseThrow(()-> WorkNotFoundException.EXCEPTION);
+        Work work = workFacade.currentWork(workId);
 
         if(work.getWorkType() == WorkType.ADULT)user.addAdultWork(work);
 
