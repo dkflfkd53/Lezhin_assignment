@@ -2,6 +2,7 @@ package com.example.lezhinassignment.domain.user.service;
 
 import com.example.lezhinassignment.domain.user.presentation.dto.response.AdultUserResponse;
 import com.example.lezhinassignment.domain.user.repository.UserRepository;
+import com.example.lezhinassignment.domain.work.entity.Visit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class GetAdultUserService {
     public List<AdultUserResponse> getAdultUser() {
         return userRepository.getAdultUser()
                 .stream()
+                .map(Visit::getUser)
                 .map(AdultUserResponse::new)
                 .collect(Collectors.toList());
     }
