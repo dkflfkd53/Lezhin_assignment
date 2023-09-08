@@ -18,6 +18,8 @@ public class QWork extends EntityPathBase<Work> {
 
     private static final long serialVersionUID = 1656456805L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QWork work = new QWork("work");
 
     public final ListPath<Comment, QComment> comments = this.<Comment, QComment>createList("comments", Comment.class, QComment.class, PathInits.DIRECT2);
@@ -32,18 +34,29 @@ public class QWork extends EntityPathBase<Work> {
 
     public final StringPath title = createString("title");
 
+    public final com.example.lezhinassignment.domain.user.entity.QUser user;
+
     public final EnumPath<com.example.lezhinassignment.domain.work.enums.WorkType> workType = createEnum("workType", com.example.lezhinassignment.domain.work.enums.WorkType.class);
 
     public QWork(String variable) {
-        super(Work.class, forVariable(variable));
+        this(Work.class, forVariable(variable), INITS);
     }
 
     public QWork(Path<? extends Work> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QWork(PathMetadata metadata) {
-        super(Work.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QWork(PathMetadata metadata, PathInits inits) {
+        this(Work.class, metadata, inits);
+    }
+
+    public QWork(Class<? extends Work> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.user = inits.isInitialized("user") ? new com.example.lezhinassignment.domain.user.entity.QUser(forProperty("user")) : null;
     }
 
 }
