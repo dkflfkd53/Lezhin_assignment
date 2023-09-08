@@ -23,8 +23,7 @@ public class DeleteCommentService {
 
         Work work = workFacade.currentWork(workId);
 
-        Comment comment = commentRepository.findByUserIdAndWorkId(user.getId(), workId)
-                .orElseThrow(()-> CommentNotFoundException.EXCEPTION);
+        Comment comment = workFacade.currentComment(user.getId(), workId);
 
         work.deleteComment(comment);
         commentRepository.delete(comment);
