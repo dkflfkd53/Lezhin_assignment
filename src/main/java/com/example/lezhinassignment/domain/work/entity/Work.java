@@ -1,5 +1,6 @@
 package com.example.lezhinassignment.domain.work.entity;
 
+import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.work.enums.WorkType;
 import lombok.*;
 
@@ -17,6 +18,11 @@ public class Work {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @NotNull
+    private User user;
 
     @NotNull
     private String title;
