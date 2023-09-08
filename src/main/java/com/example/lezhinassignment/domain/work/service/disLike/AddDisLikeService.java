@@ -44,8 +44,8 @@ public class AddDisLikeService {
 
         DisLike disLike = disLikeRepository.save(
                 DisLike.builder()
-                        .userId(user.getId())
-                        .workId(workId)
+                        .user(user)
+                        .work(work)
                         .build());
 
         work.addDisLike(disLike);

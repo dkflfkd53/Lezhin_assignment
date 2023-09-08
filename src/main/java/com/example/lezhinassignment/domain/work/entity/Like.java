@@ -1,5 +1,6 @@
 package com.example.lezhinassignment.domain.work.entity;
 
+import com.example.lezhinassignment.domain.user.entity.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,8 +16,12 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private Long workId;
+    @ManyToOne
+    @JoinColumn(name = "work_id")
+    private Work work;
 
 }

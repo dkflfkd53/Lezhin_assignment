@@ -44,8 +44,8 @@ public class AddLikeService {
 
         Like like = likeRepository.save(
                 Like.builder()
-                        .userId(user.getId())
-                        .workId(workId)
+                        .user(user)
+                        .work(work)
                         .build());
 
         work.addLike(like);
