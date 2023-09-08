@@ -27,13 +27,13 @@ public class Work {
     @NotNull
     private Long price;
 
-    @OneToMany
+    @OneToMany(mappedBy = "work")
     private List<Like> likes;
 
-    @OneToMany
+    @OneToMany(mappedBy = "work")
     private List<DisLike> disLikes;
 
-    @OneToMany
+    @OneToMany(mappedBy = "work")
     private List<Comment> comments;
 
     public void modifyPrice(Long price) {
