@@ -1,11 +1,9 @@
 package com.example.lezhinassignment.domain.work.entity;
 
+import com.example.lezhinassignment.domain.user.entity.User;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -18,11 +16,13 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private Long workId;
-
-    private String userName;
+    @ManyToOne
+    @JoinColumn(name = "work_id")
+    private Work work;
 
     private String content;
 

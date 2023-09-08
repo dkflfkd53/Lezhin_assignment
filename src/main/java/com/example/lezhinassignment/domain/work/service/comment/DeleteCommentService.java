@@ -6,7 +6,6 @@ import com.example.lezhinassignment.domain.work.entity.Comment;
 import com.example.lezhinassignment.domain.work.entity.Work;
 import com.example.lezhinassignment.domain.work.repository.CommentRepository;
 import com.example.lezhinassignment.domain.work.service.facade.WorkFacade;
-import com.example.lezhinassignment.global.exception.work.CommentNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

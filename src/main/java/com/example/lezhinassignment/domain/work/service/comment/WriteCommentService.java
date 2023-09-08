@@ -30,9 +30,8 @@ public class WriteCommentService {
 
         Comment comment = commentRepository.save(
                 Comment.builder()
-                        .userId(user.getId())
-                        .workId(workId)
-                        .userName(user.getUserName())
+                        .user(user)
+                        .work(work)
                         .content(request.getContent())
                         .build());
 
