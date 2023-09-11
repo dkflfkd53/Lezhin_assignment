@@ -8,14 +8,16 @@ import lombok.Getter;
 @AllArgsConstructor
 public class AdultUserResponse {
 
-    private Long id;
+    private Long userId;
+
+    private Long workId;
 
     private String userName;
 
     private String gender;
 
     public AdultUserResponse(User user) {
-        id = user.getId();
+        userId = user.getId();
         userName = user.getUserName();
         gender = user.getGender();
     }
