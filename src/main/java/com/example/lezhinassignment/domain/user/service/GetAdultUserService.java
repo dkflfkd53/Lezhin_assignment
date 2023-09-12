@@ -18,7 +18,6 @@ public class GetAdultUserService {
     public List<AdultUserResponse> getAdultUser() {
         return userRepository.getAdultUser()
                 .stream()
-                .map(Visit::getUser)
                 .map(AdultUserResponse::new)
                 .collect(Collectors.toList());
     }
