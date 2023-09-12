@@ -1,13 +1,13 @@
 package com.example.lezhinassignment.domain.user.entity;
 
+import com.example.lezhinassignment.domain.work.entity.Visit;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -36,6 +36,9 @@ public class User {
     private String type;
 
     private LocalDateTime visitTime;
+
+    @OneToMany
+    private List<Visit> visits = new ArrayList<>();
 
     public void updateVisitTime(LocalDateTime visitTime) {
         this.visitTime = visitTime;
