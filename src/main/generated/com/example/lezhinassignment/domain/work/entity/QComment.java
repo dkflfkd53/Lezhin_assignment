@@ -49,7 +49,7 @@ public class QComment extends EntityPathBase<Comment> {
     public QComment(Class<? extends Comment> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.user = inits.isInitialized("user") ? new com.example.lezhinassignment.domain.user.entity.QUser(forProperty("user")) : null;
-        this.work = inits.isInitialized("work") ? new QWork(forProperty("work")) : null;
+        this.work = inits.isInitialized("work") ? new QWork(forProperty("work"), inits.get("work")) : null;
     }
 
 }

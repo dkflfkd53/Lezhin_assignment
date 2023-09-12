@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -30,6 +31,8 @@ public class QUser extends EntityPathBase<User> {
     public final StringPath userEmail = createString("userEmail");
 
     public final StringPath userName = createString("userName");
+
+    public final ListPath<com.example.lezhinassignment.domain.work.entity.Visit, com.example.lezhinassignment.domain.work.entity.QVisit> visits = this.<com.example.lezhinassignment.domain.work.entity.Visit, com.example.lezhinassignment.domain.work.entity.QVisit>createList("visits", com.example.lezhinassignment.domain.work.entity.Visit.class, com.example.lezhinassignment.domain.work.entity.QVisit.class, PathInits.DIRECT2);
 
     public final DateTimePath<java.time.LocalDateTime> visitTime = createDateTime("visitTime", java.time.LocalDateTime.class);
 
