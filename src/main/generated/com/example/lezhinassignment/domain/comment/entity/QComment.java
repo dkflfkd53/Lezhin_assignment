@@ -1,4 +1,4 @@
-package com.example.lezhinassignment.domain.work.entity;
+package com.example.lezhinassignment.domain.comment.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -16,7 +16,7 @@ import com.querydsl.core.types.dsl.PathInits;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QComment extends EntityPathBase<Comment> {
 
-    private static final long serialVersionUID = 2050752139L;
+    private static final long serialVersionUID = 1380947337L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
@@ -28,7 +28,7 @@ public class QComment extends EntityPathBase<Comment> {
 
     public final com.example.lezhinassignment.domain.user.entity.QUser user;
 
-    public final QWork work;
+    public final com.example.lezhinassignment.domain.work.entity.QWork work;
 
     public QComment(String variable) {
         this(Comment.class, forVariable(variable), INITS);
@@ -49,7 +49,7 @@ public class QComment extends EntityPathBase<Comment> {
     public QComment(Class<? extends Comment> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.user = inits.isInitialized("user") ? new com.example.lezhinassignment.domain.user.entity.QUser(forProperty("user")) : null;
-        this.work = inits.isInitialized("work") ? new QWork(forProperty("work"), inits.get("work")) : null;
+        this.work = inits.isInitialized("work") ? new com.example.lezhinassignment.domain.work.entity.QWork(forProperty("work"), inits.get("work")) : null;
     }
 
 }

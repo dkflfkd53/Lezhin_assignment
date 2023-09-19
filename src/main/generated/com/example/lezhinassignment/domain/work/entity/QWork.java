@@ -22,7 +22,7 @@ public class QWork extends EntityPathBase<Work> {
 
     public static final QWork work = new QWork("work");
 
-    public final ListPath<Comment, QComment> comments = this.<Comment, QComment>createList("comments", Comment.class, QComment.class, PathInits.DIRECT2);
+    public final ListPath<com.example.lezhinassignment.domain.comment.entity.Comment, com.example.lezhinassignment.domain.comment.entity.QComment> comments = this.<com.example.lezhinassignment.domain.comment.entity.Comment, com.example.lezhinassignment.domain.comment.entity.QComment>createList("comments", com.example.lezhinassignment.domain.comment.entity.Comment.class, com.example.lezhinassignment.domain.comment.entity.QComment.class, PathInits.DIRECT2);
 
     public final ListPath<DisLike, QDisLike> disLikes = this.<DisLike, QDisLike>createList("disLikes", DisLike.class, QDisLike.class, PathInits.DIRECT2);
 

@@ -1,6 +1,7 @@
-package com.example.lezhinassignment.domain.work.entity;
+package com.example.lezhinassignment.domain.comment.entity;
 
 import com.example.lezhinassignment.domain.user.entity.User;
+import com.example.lezhinassignment.domain.work.entity.Work;
 import lombok.*;
 
 import javax.persistence.*;
