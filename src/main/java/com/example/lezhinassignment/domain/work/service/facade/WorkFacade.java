@@ -1,8 +1,8 @@
 package com.example.lezhinassignment.domain.work.service.facade;
 
-import com.example.lezhinassignment.domain.work.entity.Comment;
+import com.example.lezhinassignment.domain.comment.entity.Comment;
 import com.example.lezhinassignment.domain.work.entity.Work;
-import com.example.lezhinassignment.domain.work.repository.CommentRepository;
+import com.example.lezhinassignment.domain.comment.repository.CommentRepository;
 import com.example.lezhinassignment.domain.work.repository.WorkRepository;
 import com.example.lezhinassignment.global.exception.work.CommentNotFoundException;
 import com.example.lezhinassignment.global.exception.work.WorkNotFoundException;

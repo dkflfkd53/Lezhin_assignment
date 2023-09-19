@@ -1,5 +1,6 @@
 package com.example.lezhinassignment.domain.work.entity;
 
+import com.example.lezhinassignment.domain.comment.entity.Comment;
 import com.example.lezhinassignment.domain.user.entity.User;
 import com.example.lezhinassignment.domain.work.enums.WorkType;
 import lombok.*;

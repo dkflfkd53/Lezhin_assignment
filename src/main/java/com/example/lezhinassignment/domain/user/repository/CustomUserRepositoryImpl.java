@@ -27,8 +27,9 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
                 .fetch();*/
 
         return queryFactory.selectFrom(user)
-                .join(user.visits, visit)
-                .join(visit.work, work).on(work.workType.eq(WorkType.ADULT))
+                .join(visit).on(user.id.eq(visit.user.id))
+                .join(work).on(visit.work.id.eq(work.id))
+                .on(work.workType.eq(WorkType.ADULT))
                 .groupBy(user.id, work.id)
                 .having(work.count().gt(3))
                 .fetch();

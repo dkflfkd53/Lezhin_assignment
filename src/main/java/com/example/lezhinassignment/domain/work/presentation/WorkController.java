@@ -1,14 +1,9 @@
 package com.example.lezhinassignment.domain.work.presentation;
 
 import com.example.lezhinassignment.domain.user.presentation.dto.response.UserResponse;
-import com.example.lezhinassignment.domain.work.presentation.dto.request.CommentRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.ModifyPriceRequest;
-import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteCommentRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.request.WriteWorkRequest;
 import com.example.lezhinassignment.domain.work.presentation.dto.response.WorkResponse;
-import com.example.lezhinassignment.domain.work.service.comment.DeleteCommentService;
-import com.example.lezhinassignment.domain.work.service.comment.ModifyCommentService;
-import com.example.lezhinassignment.domain.work.service.comment.WriteCommentService;
 import com.example.lezhinassignment.domain.work.service.disLike.AddDisLikeService;
 import com.example.lezhinassignment.domain.work.service.disLike.CancelDisLikeService;
 import com.example.lezhinassignment.domain.work.service.disLike.GetUnpopularWorkService;
@@ -45,25 +40,22 @@ public class WorkController {
     private final GetUnpopularWorkService getUnpopularWorkService;
     private final CancelDisLikeService cancelDisLikeService;
 
-    //comment
-    private final WriteCommentService writeCommentService;
-    private final ModifyCommentService modifyCommentService;
-    private final DeleteCommentService deleteCommentService;
-
-
     //work
     @PostMapping("/work")
     public void writeWork(@Valid @RequestBody WriteWorkRequest request) {
         writeWorkService.writeWork(request);
     }
+
     @GetMapping("/work/{workId}")
     public WorkResponse getWork(@PathVariable Long workId) {
         return getWorkService.getWork(workId);
     }
+
     @GetMapping("/work/record/{workId}")
     public List<UserResponse> getWorkRecord(@PathVariable Long workId) {
         return getWorkRecordService.getWorkRecord(workId);
     }
+
     @PatchMapping("/work/price/{workId}")
     public void modifyPrice(@Valid @RequestBody ModifyPriceRequest request, @PathVariable Long workId) {
         modifyPriceService.modifyPrice(request, workId);
@@ -74,10 +66,12 @@ public class WorkController {
     public void addLike(@PathVariable Long workId) {
         addLikeService.addLike(workId);
     }
+
     @GetMapping("/work/popular")
     public List<WorkResponse> getPopularWork() {
         return getPopularWorkService.getPopularWork();
     }
+
     @DeleteMapping("/work/like/{workId}")
     public void cancelLike(@PathVariable Long workId) {
         cancelLikeService.cancelLike(workId);
@@ -88,27 +82,15 @@ public class WorkController {
     public void addDisLike(@PathVariable Long workId) {
         addDisLikeService.addDisLike(workId);
     }
+
     @GetMapping("/work/unpopular")
     public List<WorkResponse> getUnpopularWork() {
         return getUnpopularWorkService.getUnpopularWork();
     }
+
     @DeleteMapping("/work/dis-like/{workId}")
     public void cancelDisLike(@PathVariable Long workId) {
         cancelDisLikeService.cancelDisLike(workId);
-    }
-
-    //comment
-    @PostMapping("/work/comment/{workId}")
-    public void writeComment(@Valid @RequestBody WriteCommentRequest request, @PathVariable Long workId) {
-        writeCommentService.writeComment(request, workId);
-    }
-    @PatchMapping("/work/comment/{workId}")
-    public void modifyComment(@Valid @RequestBody CommentRequest request, @PathVariable Long workId) {
-        modifyCommentService.modifyComment(request, workId);
-    }
-    @DeleteMapping("/work/comment/{workId}")
-    public void deleteComment(@PathVariable Long workId) {
-        deleteCommentService.deleteComment(workId);
     }
 
 }
